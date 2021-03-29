@@ -46,6 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: InputDecoration(
                     hintText: 'Email',
                   ),
+                  // ignore: missing_return
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Please Fill Email Input';
@@ -60,6 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: InputDecoration(
                     hintText: 'Password',
                   ),
+                  // ignore: missing_return
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Please Fill Password Input';
@@ -83,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             password: _passwordcontroller.text);
 
                         if (result.user.uid != null) {
-                          Navigator.push(context, MaterialPageRoute(
+                          Navigator.pushReplacement(context, MaterialPageRoute(
                               builder: (context) => DashboardScreen()));
                         } else {
 
