@@ -85,8 +85,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               password: _passwordcontroller.text);
 
                       if (result != null) {
-                        FirebaseFirestore firestore = FirebaseFirestore.instance;
-                        var userInfo = firestore.collection("users").doc().set({'email':_emailcontroller.text});
+                        CollectionReference users = FirebaseFirestore.instance.collection('users');
+                        users.add({
+                              'email': _emailcontroller.text
+                            }).then((value) => print("User Added")).catchError((error) => print("Failed to add user: $error"));
+
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
